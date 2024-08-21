@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "rate-limit-guard"
+version = "0.1.0"
+description = ""
+authors = ["Gorkem Kacar <g.kacar@digitastic.app>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/yourusername/rate-limiter"
+repository = "https://github.com/yourusername/rate-limiter"
+keywords = ["rate limiter", "API", "decorator"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.32.3"
+asyncio = "^3.4.3"
+aiohttp = "^3.10.5"
+mypy = "^1.11.1"
+pylint = "^3.2.6"
+isort = "^5.13.2"
+black = "^24.8.0"
+bandit = "^1.7.9"
+autoflake = "^2.3.1"
+pytest-asyncio = "^0.23.8"
+toml = "^0.10.2"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+addopts = "-v"

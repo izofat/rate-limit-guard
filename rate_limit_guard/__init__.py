@@ -1,0 +1,1 @@
+from rate_limit_guard.decorator import rate_limit_decorator
