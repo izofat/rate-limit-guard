@@ -1,0 +1,7 @@
+test_url = "https://jsonplaceholder.typicode.com"
+
+test_endpoints = ["/posts", "/comments", "/albums", "/photos", "/todos", "/users"]
+
+interval = 5  # seconds
+
+max_calls = 3

@@ -25,5 +25,8 @@ lint:
 	@poetry run pylint tests
 	@poetry run bandit -r rate_limit_guard
 
+config:
+	@cp docs/config.example.toml ./config.toml
+
 test:
 	@poetry run pytest
