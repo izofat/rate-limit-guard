@@ -10,15 +10,14 @@ The RateLimitGuard class keeps track.
 You should be ready to handle StopIteration exceptions when using the rate limit decorator.
 """
 
+import inspect
 from functools import wraps
 from typing import Optional
 
 from rate_limit_guard.guard import RateLimitGuard
 
 
-def rate_limit_decorator(
-    interval: Optional[int] = None, max_calls: Optional[int] = None
-):
+def rate_limit_decorator(interval: int = 0, max_calls: Optional[int] = None):
     """
     A decorator that limits the rate at which a function can be called.
 
@@ -31,17 +30,32 @@ def rate_limit_decorator(
     guard = RateLimitGuard(interval, max_calls)
 
     def decorator(func):
+        is_async = inspect.iscoroutinefunction(func)
 
         @wraps(func)
-        async def wrapper(*args, **kwargs):
+        async def async_wrapper(*args, **kwargs):
             nonlocal guard
 
             if not guard.step():
                 raise StopIteration("Rate limit exceeded")
 
-            await guard.sleep()
+            await guard.sleep_async()
+
             return await func(*args, **kwargs)
 
-        return wrapper
+        @wraps(func)
+        def sync_wrapper(*args, **kwargs):
+            nonlocal guard
+
+            if not guard.step():
+                raise StopIteration("Rate limit exceeded")
+
+            guard.sleep_sync()
+
+            return func(*args, **kwargs)
+
+        if is_async:
+            return async_wrapper
+        return sync_wrapper
 
     return decorator

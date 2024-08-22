@@ -18,22 +18,30 @@ class RateLimitGuard:
     :param max_calls: The maximum number of calls allowed within the interval.
     """
 
-    def __init__(self, interval: Optional[int] = None, max_calls: Optional[int] = None):
+    def __init__(self, interval: int = 0, max_calls: Optional[int] = None):
         self.interval = interval
         self.last_call_time = 0
         self.count = 0
         self.max_calls = max_calls
 
-    async def sleep(self):
+    @property
+    def time_to_sleep(self):
         if self.interval is None:
-            return
+            return 0
 
         elapsed = time.time() - self.last_call_time
         if elapsed < self.interval:
-            time_to_sleep = self.interval - elapsed
-            print(f"Sleeping for {time_to_sleep:.2f} seconds")
+            print(f"Sleeping for {self.interval - elapsed:.2f} seconds")
+            return self.interval - elapsed
+        return 0
 
-            await asyncio.sleep(time_to_sleep)
+    async def sleep_async(self):
+        await asyncio.sleep(self.time_to_sleep)
+
+        self.last_call_time = time.time()
+
+    def sleep_sync(self):
+        time.sleep(self.time_to_sleep)
 
         self.last_call_time = time.time()
 
