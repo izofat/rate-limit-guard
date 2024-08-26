@@ -19,7 +19,8 @@ from rate_limit_guard.guard import RateLimitGuard
 
 def rate_limit_decorator(interval: int = 0, max_calls: Optional[int] = None):
     """
-    A decorator that limits the rate at which a function can be called.
+    A decorator that limits the function with given parameters.
+    This decorator can be used with both synchronous and asynchronous functions.
 
     :param interval: The time interval in seconds.
     :param max_calls: The maximum number of calls allowed within the interval.
@@ -34,8 +35,6 @@ def rate_limit_decorator(interval: int = 0, max_calls: Optional[int] = None):
 
         @wraps(func)
         async def async_wrapper(*args, **kwargs):
-            nonlocal guard
-
             if not guard.step():
                 raise StopIteration("Rate limit exceeded")
 
@@ -45,8 +44,6 @@ def rate_limit_decorator(interval: int = 0, max_calls: Optional[int] = None):
 
         @wraps(func)
         def sync_wrapper(*args, **kwargs):
-            nonlocal guard
-
             if not guard.step():
                 raise StopIteration("Rate limit exceeded")
 

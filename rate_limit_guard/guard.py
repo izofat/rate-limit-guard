@@ -26,6 +26,11 @@ class RateLimitGuard:
 
     @property
     def time_to_sleep(self):
+        """
+        The time to sleep before the next call.
+
+        :return: The time to sleep in seconds.
+        """
         if self.interval is None:
             return 0
 
@@ -36,16 +41,27 @@ class RateLimitGuard:
         return 0
 
     async def sleep_async(self):
+        """
+        Asynchronously sleep for the required time.
+        """
         await asyncio.sleep(self.time_to_sleep)
 
         self.last_call_time = time.time()
 
     def sleep_sync(self):
+        """
+        Synchronously sleep for the required time.
+        """
         time.sleep(self.time_to_sleep)
 
         self.last_call_time = time.time()
 
     def step(self):
+        """
+        Step the rate limit guard.
+
+        :return: True if the rate limit is not exceeded, False otherwise.
+        """
         if self.max_calls is None:
             return True
 
