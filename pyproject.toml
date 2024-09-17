@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rate-limit-guard"
-version = "0.1.1"
+version = "0.1.2"
 description = ""
 authors = ["Gorkem Kacar <g.kacar@digitastic.app>"]
 license = "MIT"
@@ -11,10 +11,10 @@ keywords = ["rate limiter", "API", "decorator"]
 
 [tool.poetry.dependencies]
 python = "^3.11"
+asyncio = "^3.4.3"
 
 [tool.poetry.dev-dependencies]
 requests = "^2.32.3"
-asyncio = "^3.4.3"
 aiohttp = "^3.10.5"
 mypy = "^1.11.1"
 pylint = "^3.2.6"
