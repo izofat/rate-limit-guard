@@ -11,6 +11,8 @@ keywords = ["rate limiter", "API", "decorator"]
 
 [tool.poetry.dependencies]
 python = "^3.11"
+
+[tool.poetry.dev-dependencies]
 requests = "^2.32.3"
 asyncio = "^3.4.3"
 aiohttp = "^3.10.5"
@@ -22,7 +24,6 @@ bandit = "^1.7.9"
 autoflake = "^2.3.1"
 pytest-asyncio = "^0.23.8"
 toml = "^0.10.2"
-
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.2"

@@ -17,7 +17,7 @@ from typing import Optional
 from rate_limit_guard.guard import RateLimitGuard
 
 
-def rate_limit_decorator(interval: int = 0, max_calls: Optional[int] = None):
+def rate_limit_decorator(max_calls: Optional[int] = None, interval: int = 0):
     """
     A decorator that limits the function with given parameters.
     This decorator can be used with both synchronous and asynchronous functions.
