@@ -2,6 +2,16 @@
 
 This Python module provides a `rate_limit_decorator` that allows you to limit the rate at which a function can be called. It supports both synchronous and asynchronous functions, making it versatile for various applications.
 
+## Installation
+
+Install the rate-limit-guard package via pip:
+
+```bash
+pip install rate-limit-guard
+```
+
+Once installed, import rate_limit_decorator into your project and apply it to your functions to enable rate limiting.
+
 ## Features
 
 - **Rate Limiting**: Control the maximum number of function calls within a given time interval.
