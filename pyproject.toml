@@ -5,8 +5,8 @@ description = ""
 authors = ["Gorkem Kacar <g.kacar@digitastic.app>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/yourusername/rate-limiter"
-repository = "https://github.com/yourusername/rate-limiter"
+homepage = "https://github.com/izofat/rate-limit-guard"
+repository = "https://github.com/izofat/rate-limit-guard"
 keywords = ["rate limiter", "API", "decorator"]
 
 [tool.poetry.dependencies]
