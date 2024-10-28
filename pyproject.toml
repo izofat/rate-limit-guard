@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rate-limit-guard"
-version = "0.1.2"
+version = "0.1.3"
 description = ""
 authors = ["Gorkem Kacar <g.kacar@digitastic.app>"]
 license = "MIT"
